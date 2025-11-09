@@ -117,9 +117,7 @@ class WalletTest {
     @Test
     @DisplayName("Обновление несуществующего бюджета")
     void testUpdateNonExistentBudget() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            wallet.updateBudget("Несуществующая", 1000);
-        });
+        assertThrows(IllegalArgumentException.class, () -> wallet.updateBudget("Несуществующая", 1000));
     }
 
     @Test
@@ -179,9 +177,7 @@ class WalletTest {
     void testCalculateExpensesForEmptyCategories() {
         wallet.addTransaction(new Transaction("Еда", 1000, TransactionType.EXPENSE, "Продукты"));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            wallet.calculateExpensesForCategories(Set.of());
-        });
+        assertThrows(IllegalArgumentException.class, () -> wallet.calculateExpensesForCategories(Set.of()));
     }
 
     @Test
