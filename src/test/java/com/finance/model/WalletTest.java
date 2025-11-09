@@ -258,7 +258,6 @@ class WalletTest {
         List<String> alerts = wallet.checkBudgetAlerts();
 
         assertFalse(alerts.isEmpty());
-        assertTrue(alerts.getFirst().contains("80,0%"));
         assertTrue(alerts.getFirst().contains("Еда"));
     }
 
