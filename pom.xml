@@ -16,6 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.2</junit.version>
         <maven.checkstyle.version>3.2.1</maven.checkstyle.version>
+        <config_loc>${project.basedir}</config_loc>
     </properties>
 
     <dependencies>
@@ -60,31 +61,41 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.0</version>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven.checkstyle.version}</version>
+                <version>3.3.0</version>
                 <configuration>
-                    <configLocation>checkstyle.xml</configLocation>
-                    <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
+                    <configLocation>google_checks.xml</configLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <failOnViolation>true</failOnViolation>
+                    <logViolationsToConsole>true</logViolationsToConsole>
                 </configuration>
                 <executions>
                     <execution>
+                        <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
                     <mainClass>com.finance.cli.FinanceCLI</mainClass>
+                    <systemProperties>
+                        <property>
+                            <key>file.encoding</key>
+                            <value>UTF-8</value>
+                        </property>
+                        <property>
+                            <key>sun.jnu.encoding</key>
+                            <value>UTF-8</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
             </plugin>
         </plugins>
