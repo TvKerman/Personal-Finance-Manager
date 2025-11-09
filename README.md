@@ -33,7 +33,7 @@
 
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/yourusername/personal-finance-manager.git
+git clone https://github.com/TvKerman/Personal-Finance-Manager.git
 cd personal-finance-manager
 
 # Сборка проекта
